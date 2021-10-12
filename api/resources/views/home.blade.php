@@ -17,9 +17,11 @@
             </header>
 
             <div class="w-full p-6">
-                <p class="text-gray-700">
-                    Você entrou
-                </p>
+                <div class="grid grid-cols-3">
+                    @foreach ($giriasDesseUsuario as $giriaDesseUsuario)
+                        <x-giria-card :giria="$giriaDesseUsuario" />
+                    @endforeach
+                </div>
             </div>
         </section>
     </div>

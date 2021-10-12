@@ -15,12 +15,16 @@ class CreateGiriasTable extends Migration
     {
         Schema::create('girias', function (Blueprint $table) {
             $table->id();
+
+            $table->bigInteger('criadoPor')->unsigned();
+            $table->foreign('criadoPor')->references('id')->on('users');
+
             $table->string('nome');
             $table->string('local');
             $table->mediumText('significados');
-            $table->mediumText('etimologia');
-            $table->string('imagem');
-            $table->string('videoId');
+            $table->mediumText('etimologia')->nullable();
+            $table->string('imagem')->nullable();
+            $table->string('videoId')->nullable();
             $table->timestamps();
         });
     }

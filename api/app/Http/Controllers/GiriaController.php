@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Giria;
+use Auth;
+
 
 class GiriaController extends Controller
 {
@@ -50,7 +53,41 @@ class GiriaController extends Controller
     }
 
     public function createGiria(Request $request){
-        return $request;
+
+        $giria = new Giria;
+
+        $giria->criadoPor = Auth::user()->id;
+
+        $giria->nome = $request->nome;
+
+        $locais = '';
+        $significados = '';
+        foreach($request->except('_token') as $key => $value){
+            if(strpos($key, 'local') !== false){
+                $locais .= $value.'/';
+            } else if(strpos($key, 'significado') !== false){
+                $significados .= $value.';*';
+            }
+        }
+        $giria->local = substr($locais, 0 ,-1);
+        $giria->significados = substr($significados, 0 ,-1);
+
+        $giria->etimologia = isset($request->etimologia) ? $request->etimologia : null;
+        $giria->imagem = '';
+        if(isset($request->imagem)){
+            Storage::put('public/', $request->file('imagem'));
+            $giria->imagem = $request->file('imagem');
+        }
+        if(!empty($request->url) && $explodedURL = explode('watch?v=', $request->url)){
+            $giria->videoId = $explodedURL[1];
+        }
+
+        if($giria->save()){
+            app('App\Http\Controllers\HomeController')->index();
+        }
+
+        return view('create');
+        
     }
 
 }

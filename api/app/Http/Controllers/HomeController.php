@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Giria;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $userId = Auth::user()->id;
+
+        if($giriasDesseUsuario = Giria::where('criadoPor', $userId)->get()){
+            foreach($giriasDesseUsuario as $giria){
+                // $giria = json_decode($giria);
+                $giria->significados = explode("*", $giria->significados);
+            }
+        }
+
+
+        return view('home', ['giriasDesseUsuario' => $giriasDesseUsuario]);
     }
 }

@@ -13,6 +13,7 @@ class GuestController extends Controller
             $giriaHoje = Giria::inRandomOrder()->first();
             $giriaHoje->significados = explode("*", $giriaHoje->significados);
         }
+        
         return view("welcome", ['giriaHoje' => $giriaHoje]);
     }
 }
