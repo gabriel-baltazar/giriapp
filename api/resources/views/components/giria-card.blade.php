@@ -1,11 +1,11 @@
 <div class="flex justify-center">
-  <section class="flex w-3/4 flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+  <section class="flex w-full flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
-        <header class="font-bold bg-gray-200 text-2xl py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+        <header class="font-bold bg-gray-200 text-blue-600 text-center text-2xl py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
             {{$giria->nome}}
         </header>
 
-        <div class="text-gray-500 font-bold my-2">
+        <div class="text-gray-500 font-bold my-2 px-5">
             {{$giria->local}}
         </div>
 

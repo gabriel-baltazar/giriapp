@@ -17,7 +17,7 @@
             </header>
 
             <div class="w-full p-6">
-                <div class="grid grid-cols-3">
+                <div class="grid grid-cols-3 gap-2">
                     @foreach ($giriasDesseUsuario as $giriaDesseUsuario)
                         <x-giria-card :giria="$giriaDesseUsuario" />
                     @endforeach
