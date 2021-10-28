@@ -50,5 +50,25 @@
 
         @yield('content')
     </div>
+    <style>
+        .efeitoUnderline {
+            position: relative;
+        }
+        .efeitoUnderline:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6b7280;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .efeitoUnderline:hover:before {
+            visibility: visible;
+            width: 100%;
+        }
+    </style>
 </body>
 </html>

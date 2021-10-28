@@ -90,4 +90,46 @@ class GiriaController extends Controller
         
     }
 
+    public function editGiria(Request $request, $giriaId){
+        $giriaToEdit = Giria::findOrFail($giriaId);
+        $giriaToEdit->local = explode('/', $giriaToEdit->local);
+        $giriaToEdit->significados = explode(';*', substr($giriaToEdit->significados, 0, -1));
+
+        return view('create', ['giriaToEdit' => $giriaToEdit]);
+    }
+
+    public function updateGiria(Request $request, $giriaId){
+        $giria =  Giria::findOrFail($giriaId);
+
+        $giria->nome = $request->nome;
+
+        $locais = '';
+        $significados = '';
+        foreach($request->except('_token') as $key => $value){
+            if(strpos($key, 'local') !== false){
+                $locais .= $value.'/';
+            } else if(strpos($key, 'significado') !== false){
+                $significados .= $value.';*';
+            }
+        }
+        $giria->local = substr($locais, 0 ,-1);
+        $giria->significados = substr($significados, 0 ,-1);
+
+        $giria->etimologia = isset($request->etimologia) ? $request->etimologia : null;
+        $giria->imagem = '';
+        if(isset($request->imagem)){
+            Storage::put('public/', $request->file('imagem'));
+            $giria->imagem = $request->file('imagem');
+        }
+        if(!empty($request->url) && $explodedURL = explode('watch?v=', $request->url)){
+            $giria->videoId = $explodedURL[1];
+        }
+
+        if($giria->save()){
+            app('App\Http\Controllers\HomeController')->index();
+        }
+        
+        return view('create');
+    }
+
 }

@@ -20,3 +20,6 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::get('/create', [\App\Http\Controllers\GiriaController::class, 'newGiria']);
 Route::post('/create/register', [\App\Http\Controllers\GiriaController::class, 'createGiria']);
+
+Route::get('/edit/{giriaId}', [\App\Http\Controllers\GiriaController::class, 'editGiria']);
+Route::post('/edit/update/{giriaId}', [\App\Http\Controllers\GiriaController::class, 'updateGiria']);
