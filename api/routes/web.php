@@ -23,3 +23,5 @@ Route::post('/create/register', [\App\Http\Controllers\GiriaController::class, '
 
 Route::get('/edit/{giriaId}', [\App\Http\Controllers\GiriaController::class, 'editGiria']);
 Route::post('/edit/update/{giriaId}', [\App\Http\Controllers\GiriaController::class, 'updateGiria']);
+
+Route::get('/delete/{giriaId}', [\App\Http\Controllers\GiriaController::class, 'deleteGiria']);

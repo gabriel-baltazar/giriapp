@@ -18,10 +18,12 @@
         </div>
         <div class="mt-5 col-sm-6">
           <div class="d-flex justify-content-center mb-5">
-            <img :src="giria.imagem" alt="" />
+            <img v-if="giria.imagem" :src="giria.imagem" alt="" />
+            <img v-else :src="`${publicPath}noImg.png`" height="200" width="200" alt="" />
           </div>
           <div class="d-flex justify-content-center mb-5">
             <iframe
+              v-if="giria.videoId"
               id="ytplayer"
               type="text/html"
               width="640"
@@ -30,6 +32,7 @@
               :src="'https://www.youtube.com/embed/' + giria.videoId"
               frameborder="0"
             />
+            <img v-else :src="`${publicPath}noVid.png`" alt="" />
           </div>
         </div>
       </div>
@@ -47,6 +50,7 @@ export default {
   data() {
     return {
       giria: null,
+      publicPath: process.env.BASE_URL,
     };
   },
 

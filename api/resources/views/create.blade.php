@@ -55,6 +55,9 @@
                             <svg onClick="addSignificado()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg cursor-pointer" viewBox="0 0 16 16">
                                 <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
                             </svg>
+                            <svg onClick="removeSignificado()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="cursor-pointer ml-2 bi bi-dash-lg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+                            </svg>
                         </div>
                         <div id="wrapperSignificados" class="grid grid-cols-1">
                         @if(isset($giriaToEdit))
@@ -88,6 +91,13 @@
                             @else Cadastrar
                             @endif
                         </button>
+                        @if(isset($giriaToEdit))
+                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                <a href="{{'/delete/'.$giriaToEdit->id}}">
+                                    Excluir
+                                </a>
+                            </button>
+                        @endif
                     </div>
                 </form>
             </div>

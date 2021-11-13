@@ -21,9 +21,6 @@
                     @foreach ($giriasDesseUsuario as $giriaDesseUsuario)
                         <div class="flex flex-col">
                             <x-giria-card :giria="$giriaDesseUsuario" />
-                            <button type="submit" class="bg-blue-500 hover:bg-red-700 text-white w-1/4 mx-auto font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                                Excluir
-                            </button>
                         </div>
                     @endforeach
                 </div>
