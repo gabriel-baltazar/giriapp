@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Idiom extends Model
 {
     use HasFactory;
+
+    protected $table = 'idiom';
+    protected $fillable = [
+        'criadoPor', 'expressao_pt', 'expressao_en'
+    ];
 }
