@@ -37,13 +37,14 @@ export default {
 
   created() {
     this.$store.dispatch('fetchResults', '')
+    this.hideButton = this.$store.state.girias.length <= 9 ? this.hideButton = "d-none" : ''
   },
 
   methods: {
     verMais() {
       console.log(this.$store.state.girias.length)
       this.showIndex = this.showIndex + 9;
-      if (this.showIndex > this.$store.state.girias.length || this.$store.state.girias.length <= 9) {
+      if (this.showIndex > this.$store.state.girias.length) {
         this.hideButton = "d-none";
       }
     },
