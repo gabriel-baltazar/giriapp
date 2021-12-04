@@ -40,7 +40,7 @@
                         <div id="wrapperLocais" class="grid grid-cols-3 gap-4">
                         @if(isset($giriaToEdit))
                             @foreach($giriaToEdit->local as $key => $localSingular)
-                                <input value="{{$localSingular}}" required id="{{'local'.($key+1)}}" class="shadow appearance-none border rounded w-full py-2 px-3 mr-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="{{'local'.($key+1)}}" type="text">
+                                <input value="{{$localSingular}}" required id="{{'local'. ($key+1)}}" class="shadow appearance-none border rounded w-full py-2 px-3 mr-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="{{'local' . ($key+1)}}" type="text">
                             @endforeach
                         @else
                             <input required id="local1" class="shadow appearance-none border rounded w-full py-2 px-3 mr-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="local1" type="text">
@@ -62,7 +62,7 @@
                         <div id="wrapperSignificados" class="grid grid-cols-1">
                         @if(isset($giriaToEdit))
                             @foreach($giriaToEdit->significados as $key => $significado)
-                                <input value="{{$significado}}" required id="{{'significado'.($key+1)}}" class="shadow appearance-none border rounded w-full py-2 px-3 mr-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="{{'significado'.($key+1)}}" type="text">
+                                <input value="{{$significado}}" required id="{{'significado'.($key+1)}}" class="shadow appearance-none border rounded w-full py-2 px-3 mr-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="{{'significado'. ($key+1)}}" type="text">
                             @endforeach
                         @else
                             <input required id="significado1" class="shadow appearance-none border rounded w-full py-2 px-3 mr-2 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="significado1" type="text">

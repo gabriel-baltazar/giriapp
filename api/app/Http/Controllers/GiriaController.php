@@ -74,9 +74,9 @@ class GiriaController extends Controller
 
         $giria->etimologia = isset($request->etimologia) ? $request->etimologia : null;
         $giria->imagem = '';
-        if(isset($request->imagem)){
-            Storage::put('public/', $request->file('imagem'));
-            $giria->imagem = $request->file('imagem');
+        if($request->hasFile('imagem')){
+            $imageFile = $request->file('imagem')->store('images');
+            $giria->imagem = $imageFile;
         }
         if(!empty($request->url) && $explodedURL = explode('watch?v=', $request->url)){
             $giria->videoId = $explodedURL[1];

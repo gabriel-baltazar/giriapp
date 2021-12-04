@@ -18,7 +18,7 @@
         </div>
         <div class="mt-5 col-sm-6">
           <div class="d-flex justify-content-center mb-5">
-            <img v-if="giria.imagem" :src="giria.imagem" alt="" />
+            <img v-if="`${publicPath}`+ giria.imagem" :src="`${publicPath}`+ giria.imagem" width="580" height="340" alt="" />
             <img v-else :src="`${publicPath}noImg.png`" height="200" width="200" alt="" />
           </div>
           <div class="d-flex justify-content-center mb-5">
@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       giria: null,
-      publicPath: process.env.BASE_URL,
+      publicPath: 'http://localhost:8000/storage/',
     };
   },
 
