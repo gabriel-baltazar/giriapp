@@ -83,7 +83,7 @@ class GiriaController extends Controller
         }
 
         if($giria->save()){
-            app('App\Http\Controllers\HomeController')->index();
+            return app('App\Http\Controllers\HomeController')->index();
         }
 
         return view('create');
@@ -136,7 +136,7 @@ class GiriaController extends Controller
         $giria = Giria::find($giriaId);
 
         if($giria->delete()){
-            app('App\Http\Controllers\HomeController')->index();
+            return app('App\Http\Controllers\HomeController')->index();
         } else {
             return view('create');
         }   
