@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GiriaController;
+use App\Http\Controllers\IdiomController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +31,7 @@ Route::get('/girias/{str}', [GiriaController::class, 'filterGirias']);
 
 //retorna os dados de uma giria especifica no banco
 Route::get('/giria/{id}', [GiriaController::class, 'getGiria']);
+
+//retorna todos idioms encontrado no banco
+Route::get('/idiom', [IdiomController::class, 'getIdioms']);
 

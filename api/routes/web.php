@@ -25,3 +25,11 @@ Route::get('/edit/{giriaId}', [\App\Http\Controllers\GiriaController::class, 'ed
 Route::post('/edit/update/{giriaId}', [\App\Http\Controllers\GiriaController::class, 'updateGiria']);
 
 Route::get('/delete/{giriaId}', [\App\Http\Controllers\GiriaController::class, 'deleteGiria']);
+
+Route::post('/create/idiom/register', [\App\Http\Controllers\IdiomController::class, 'createIdiom']);
+Route::post('/update/idiom/{idiomId}', [\App\Http\Controllers\IdiomController::class, 'updateIdiom']);
+Route::get('/delete/idiom/{idiomId}', [\App\Http\Controllers\IdiomController::class, 'deleteIdiom']);
+
+Route::get('/token', function () {
+    return csrf_token(); 
+});

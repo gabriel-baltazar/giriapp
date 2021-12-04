@@ -13,7 +13,7 @@ class Idiom extends Migration
      */
     public function up()
     {
-       Schema::create('idioms', function (Blueprint $table) {
+       Schema::create('idiom', function (Blueprint $table) {
             $table->id();
 
             $table->bigInteger('criadoPor')->unsigned();
